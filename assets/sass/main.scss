@@ -1,0 +1,78 @@
+@import './partials/reset';
+@import './partials/variables';
+
+html {
+  font-family: 'Space Mono', monospace;
+  cursor: url('@img/cursorb.png') 7.5 7.5, auto;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#content {
+  text-align:center;
+
+  h1 {
+    color: $blue;
+    font-size: 6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: 2.4rem;
+  }
+
+  a.button {
+    display: block;
+    width: max-content;
+  
+    color: white;
+    font-size: 1.8rem;
+    background-color: $dark;
+    border: none;
+    border-radius: 0;
+    padding-inline: 10rem;
+    padding-block: 5rem;
+    margin-inline: auto;
+    margin-top: 5rem;
+  
+    transition: $base;
+  
+    &:hover {
+      color: $red;
+      background-color: darken($dark, 10%);
+    }
+  }
+}
+
+.cursor {
+  --x: 0;
+  --y: 0;
+  --h: 6.5rem;
+  --w: 6.5rem;
+
+  position: fixed;
+  top: 0;
+  left:0;
+  transform: translate( calc( var(--x) - var(--w) / 2 ), calc( var(--y) - var(--h) /2 ) );
+
+  height: var(--h);
+  width: var(--w);
+  border-radius: calc(var(--h) / 2);
+  border: 4px solid $red;
+  background-color: rgba(225, 225, 225, 0.2);
+  pointer-events: none;
+
+  backdrop-filter: blur(2px);
+  background-blend-mode: overlay;
+  transition:
+    width 0.2s cubic-bezier(.39,.575,.565,1),
+    height 0.2s cubic-bezier(.39,.575,.565,1),
+    transform 0.2s cubic-bezier(.39,.575,.565,1);
+  z-index: 10;
+  will-change: transform;
+}
